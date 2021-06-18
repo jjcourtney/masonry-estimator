@@ -14,6 +14,7 @@
 /* Across code:
     "b" prefix = brick / block
     "w" prefix = wall
+    "p" prefix = pillar
 */
 
 const wastage = 0.1; // 10% expected wastage
@@ -44,17 +45,17 @@ const standardBlock = {
 }
 
 function numberOfBricksLayer(wHeight, wLength, widthWays, bType) {
-    let totalBLength = bType.bLength + bType.mortarJoint;
-    console.log(totalBLength )
-    const totalBHeight = bType.bHeight + bType.mortarJoint;
+    let bLength = bType.bLength;
+    const bHeight = bType.bHeight;
 
     if (widthWays){ // If brick is width ways (whole brick thickness of the wall)
-        totalBLength =  bType.bDepth + bType.mortarJoint; // changes orientation of the brick
+        bLength =  bType.bDepth; // changes orientation of the brick
     }
     // Calculate whole bricks required
-    const totalBRequiredLength = Math.ceil(wLength / mmToM(totalBLength));
-    console.log(totalBRequiredLength)
-    const totalBRequiredHeight = Math.ceil(wHeight / mmToM(totalBHeight));
+    const totalBRequiredLength = bricksRequiredInOneDirection(wLength, bLength , true);
+    //console.log("Total bricks required length:", totalBRequiredLength);
+    const totalBRequiredHeight = bricksRequiredInOneDirection(wHeight, bHeight, true );
+    //console.log("Total bricks required height:", totalBRequiredHeight);
     let totalBRequired = totalBRequiredLength * totalBRequiredHeight;
     totalBRequired += totalBRequired * wastage;
 
@@ -78,7 +79,7 @@ function mToMm(m){
 */
 // Calculate the number of bricks for a flat section of wall
 
-function numberOfBricksSection(wHeight, wLength, wThickness, bType){
+function bricksRequiredSection(wHeight, wLength, wThickness, bType){
     const fullBrickLayers = Math.floor(wThickness); // whole number of thickness
     console.log("full brick layers: ", fullBrickLayers);
 
@@ -90,8 +91,43 @@ function numberOfBricksSection(wHeight, wLength, wThickness, bType){
     if (halfBrickLayers === 0.5) {
         totalBricksRequiredSection += numberOfBricksLayer(wHeight, wLength, false, bType);
     }
-    return totalBricksRequiredSection;
+    return Math.ceil(totalBricksRequiredSection);
 }
 
-console.log(numberOfBricksSection(1.6, 8, 1, imperialBrick));
-console.log(numberOfBricksSection(1.6, 8, 1, standardBlock));
+console.log("Numbers of bricks in section imp brick:", bricksRequiredSection(1.6, 1, 1, imperialBrick));
+console.log("Numbers of bricks in section std brick:", bricksRequiredSection(1.6, 1, 1, standardBrick));
+console.log("Numbers of bricks in section std block:", bricksRequiredSection(1.6, 1, 1, standardBlock));
+
+// calculate bricks required in a given directions
+
+function bricksRequiredInOneDirection(wDimension, bDimension, addMortar){
+    if (addMortar){
+        return Math.ceil(wDimension / mmToM(bDimension + mortarThickness));
+    }
+    return Math.ceil(wDimension / mmToM(bDimension))
+}
+
+// amount of bricks in a pillar when base in bricks is know
+
+function bricksRequiredPillar(baseAmount, bHeight, pHeight){
+    return baseAmount * bricksRequiredInOneDirection(bHeight, pHeight);
+}
+
+/* sample section object
+
+sectionObj = {
+    height: 1,  // m
+    length: 6,  // m
+    width = 1.5, // m
+    brickType = standardBrick
+}
+ */
+
+/* sample pillar object
+
+sectionObj = {
+    height: 1,  // m
+    base: 6,  // number of bricks
+    brickType = standardBrick
+}
+ */
