@@ -94,9 +94,7 @@ function bricksRequiredSection(wHeight, wLength, wThickness, bType){
     return Math.ceil(totalBricksRequiredSection);
 }
 
-console.log("Numbers of bricks in section imp brick:", bricksRequiredSection(1.6, 1, 1, imperialBrick));
-console.log("Numbers of bricks in section std brick:", bricksRequiredSection(1.6, 1, 1, standardBrick));
-console.log("Numbers of bricks in section std block:", bricksRequiredSection(1.6, 1, 1, standardBlock));
+
 
 // calculate bricks required in a given directions
 
@@ -112,6 +110,21 @@ function bricksRequiredInOneDirection(wDimension, bDimension, addMortar){
 function bricksRequiredPillar(baseAmount, bHeight, pHeight){
     return baseAmount * bricksRequiredInOneDirection(bHeight, pHeight);
 }
+
+function mortarBagsRequired(bricksReq) {
+    return Math.ceil(bricksReq / 25);
+}
+
+function materialsRequired(wHeight, wLength, wThickness, bType){
+    let bReq = bricksRequiredSection(wHeight, wLength, wThickness, bType);
+    let mortarReq = mortarBagsRequired(bReq);
+
+    return {bricks : bReq, mortar : mortarReq};
+}
+
+console.log("Numbers of bricks in section imp brick:", materialsRequired(1.6, 1, 1, imperialBrick));
+console.log("Numbers of bricks in section std brick:", materialsRequired(1.6, 1, 1, standardBrick));
+console.log("Numbers of bricks in section std block:", materialsRequired(1.6, 1, 1, standardBlock));
 
 /* sample section object
 
