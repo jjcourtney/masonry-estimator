@@ -6,84 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Materials calculator</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!--- will a js later
-    <script src="./assets/script.js" defer></script>
-    --->
+
+    <script src="./assets/js/frontendControls.js" defer></script>
+
 </head>
 <body>
     <main>
         <section class="container">
-            <div class="section">
-                <div class="selector">
-                    <label for="section-selector">Section type</label>
-                    <select id="section-selector">
-                        <option value="pillar">Pillar</option>
-                        <option value="wall">Wall</option>
-                    </select>
-                </div>
-                <div class="section-properties">
-                    <div>
-                        <label for="brick-type">Brick type</label><br>
-                        <select id="brick-type">
-                            <option value="standard-brick">Standard Brick</option>
-                            <option value="imperial-brick">Imperial Brick</option>
-                            <option value="standard-block">Standard Block</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="height1">Height</label><br>
-                        <input type="number" id="height1" max="10000">
-                    </div>
-                    <div>
-                        <label for="length1">Length</label><br>
-                        <input type="number" id="length1" max="10000">
-                    </div>
-                    <div>
-                        <label for="thickness1">Thickness</label><br>
-                        <input type="number" id="thickness1" max="10000">
-                    </div>
-                    <div>
-                        <label for="cost1">Cost per brick</label><br>
-                        <input type="number" id="cost1" max="10000">
-                    </div>
-                </div>
-            </div>
-            <div class="section">
-                <div class="selector">
-                    <label for="section-selector">Section type</label>
-                    <select id="section-selector">
-                        <option value="pillar">Pillar</option>
-                        <option value="wall">Wall</option>
-                    </select>
-                </div>
-                <div class="section-properties">
-                    <div>
-                        <label for="brick-type">Brick type</label><br>
-                        <select id="brick-type">
-                            <option value="standard-brick">Standard Brick</option>
-                            <option value="imperial-brick">Imperial Brick</option>
-                            <option value="standard-block">Standard Block</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="height1">Height</label><br>
-                        <input type="number" id="height1" max="10000">
-                    </div>
-                    <div>
-                        <label for="length1">Length</label><br>
-                        <input type="number" id="length1" max="10000">
-                    </div>
-                    <div>
-                        <label for="thickness1">Thickness</label><br>
-                        <input type="number" id="thickness1" max="10000">
-                    </div>
-                    <div>
-                        <label for="cost1">Cost per brick</label><br>
-                        <input type="number" id="cost1" max="10000">
-                    </div>
-                </div>
-            </div>
-            <div class="section">
+            <div class="section" id="section1">
                 <div class="selector">
                     <label for="section-selector">Section type</label>
                     <select id="section-selector">
@@ -123,17 +53,25 @@
 
 
 
-            <div class="functionality" id="">
-                <button id="add-section">Add a section</button>
-                <button id="update">Update</button>
-                <button id="send-to-quote">Send to quote</button>
-                <button id="change-defaults">Change defaults</button>
-            </div>
+
 
         </section>
 
         <section id="output-section" style="text-align: center">
-            Output goes here
+            <div class="functionality" id="">
+                <div>
+                    <button id="add-section">Add a section</button>
+                </div>
+                <div>
+                    <button id="update">Update</button>
+                </div>
+                <div>
+                    <button id="send-to-quote">Send to quote</button>
+                </div>
+                <div>
+                    <button id="change-defaults">Change defaults</button>
+                </div>
+            </div>
         </section>
     </main>
 </body>

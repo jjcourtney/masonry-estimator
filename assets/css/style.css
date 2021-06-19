@@ -72,9 +72,7 @@ section, div {
     justify-content: center;
     margin: 10px auto;
 
-}
-input {
-    max-width: 2.5rem;
+
 }
 .selector, .section-properties {
     display: grid;
@@ -96,9 +94,10 @@ input {
 }
 
 .functionality{
-    position: absolute;
-    bottom: 2.5%;
-    right: 2.5%;
+    position: relative;
+    top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
     width: 95%;
     border-radius: 15px;
 
@@ -119,8 +118,45 @@ select {
     color: var(--colour-text-1st);
     font-size: large;
     font-family: Helvetica;
+    border-radius: 5px;
 }
 option{
     background-color: var(--colour-text-2nd);
     color: var(--colour-text-1st);
+}
+
+input {
+    background-color: var(--colour-2nd);
+    border-radius: 5px;
+    color: var(--colour-text-2nd);
+    border: 1px solid var(--colour-1st);
+    width: 3rem;
+    height: 1.5rem;
+}
+input:focus-visible {
+    outline: 2px solid var(--colour-1st);
+    outline-style: dashed;
+    border-radius: 0px;
+
+}
+.functionality{
+    position: relative;
+    display: inline-grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 3rem 3rem;
+    justify-content: center;
+
+}
+.functionality button {
+    width: 95%;
+    align-self: center;
+}
+.functionality button {
+    width: 95%;
+    align-self: center;
+}
+
+button:hover{
+    color: var(--colour-1st);
+    background-color: var(--colour-2nd);
 }
