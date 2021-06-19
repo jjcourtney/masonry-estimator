@@ -44,6 +44,28 @@ const standardBlock = {
     cost: 0.2 // £
 }
 
+let sectionObj2 = {
+    type: "section",
+    sectionHeight: 1,  // m
+    sectionLength: 6,  // m
+    sectionThickness : 1.5, // m
+    brickType : standardBrick
+}
+
+let sectionObj1 = {
+    type : "pillar",
+    sectionHeight: 1,  // m
+    base: 6,  // number of bricks
+    brickType : standardBrick
+}
+
+
+let allSectionsAndPillars = [sectionObj1, sectionObj2]; // container for all the sections and pillars
+let allMaterials = []; // array contains each material object for each section and pillar
+
+
+
+
 function numberOfBricksLayer(wHeight, wLength, widthWays, bType) {
     let bLength = bType.bLength;
     const bHeight = bType.bHeight;
@@ -69,6 +91,8 @@ function mmToM(mm){
 function mToMm(m){
     return m * 1000;
 }
+
+
 /*
 // full brick is width ways thickness = 1 ||  half brick is length ways thickness = 0
   /``/|                                          _______
@@ -107,40 +131,50 @@ function bricksRequiredInOneDirection(wDimension, bDimension, addMortar){
 
 // amount of bricks in a pillar when base in bricks is know
 
-function bricksRequiredPillar(baseAmount, bHeight, pHeight){
-    return baseAmount * bricksRequiredInOneDirection(bHeight, pHeight);
+function bricksRequiredPillar(baseAmount, pHeight, bHeight){
+    return baseAmount * bricksRequiredInOneDirection(pHeight, bHeight, true);
 }
 
 function mortarBagsRequired(bricksReq) {
     return Math.ceil(bricksReq / 25);
 }
 
-function materialsRequired(wHeight, wLength, wThickness, bType){
+function materialsRequiredSection(wHeight, wLength, wThickness, bType){
     let bReq = bricksRequiredSection(wHeight, wLength, wThickness, bType);
     let mortarReq = mortarBagsRequired(bReq);
 
     return {bricks : bReq, mortar : mortarReq};
 }
 
-console.log("Numbers of bricks in section imp brick:", materialsRequired(1.6, 1, 1, imperialBrick));
-console.log("Numbers of bricks in section std brick:", materialsRequired(1.6, 1, 1, standardBrick));
-console.log("Numbers of bricks in section std block:", materialsRequired(1.6, 1, 1, standardBlock));
+function materialsRequiredPillar(base, pHeight, bHeight){
+    let bReq = bricksRequiredPillar(base, pHeight, bHeight);
+    let mortarReq = mortarBagsRequired(bReq);
 
-/* sample section object
-
-sectionObj = {
-    height: 1,  // m
-    length: 6,  // m
-    width = 1.5, // m
-    brickType = standardBrick
+    return {bricks : bReq, mortar : mortarReq};
 }
- */
 
-/* sample pillar object
+function createArrayOfMaterials() {
 
-sectionObj = {
-    height: 1,  // m
-    base: 6,  // number of bricks
-    brickType = standardBrick
+    for (let i in allSectionsAndPillars){
+        let secOrPillar = allSectionsAndPillars[i];
+        let brick = secOrPillar.type;
+        console.log(secOrPillar);
+        let tmpMatsReq = {};
+        if (secOrPillar.type === "section"){
+            console.log(secOrPillar.brickType, "brick type")
+            tmpMatsReq = materialsRequiredSection(secOrPillar.sectionHeight, secOrPillar.sectionLength, secOrPillar.sectionThickness, secOrPillar.brickType)
+        } else {
+            console.log(allSectionsAndPillars[i].brickType, "pil")
+            tmpMatsReq = materialsRequiredPillar(secOrPillar.base, secOrPillar.sectionHeight, secOrPillar.brickType.bHeight)
+        }
+        allMaterials.push(tmpMatsReq);
+    }
+    return allMaterials;
 }
- */
+
+console.log("All materials required: ", createArrayOfMaterials());
+
+// console.log("Numbers of bricks in section imp brick:", materialsRequiredSection(1.6, 1, 1, imperialBrick));
+// console.log("Numbers of bricks in section std brick:", materialsRequiredSection(1.6, 1, 1, standardBrick));
+// console.log("Numbers of bricks in section std block:", materialsRequiredSection(1.6, 1, 1, standardBlock));
+//
