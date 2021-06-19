@@ -54,4 +54,9 @@ function addSectionText(){
     return htmlToAdd;
 }
 
+function updateMats(){
+    return;
+}
+
 addSectionsBtn.addEventListener("click", addSection);
+updateBtn.addEventListener("click", updateMats);
