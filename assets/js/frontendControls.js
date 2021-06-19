@@ -1,9 +1,21 @@
 const addSectionsBtn = document.getElementById("add-section");
-const updateBtn= document.getElementById("update");
+const updateBtn = document.getElementById("update");
 const sendToQuoteBtn = document.getElementById("send-to-quote");
 const changeDefaultsBtn = document.getElementById("change-defaults");
 const section1Div = document.getElementById("section1");
-const textToAdd = `            <div class="section" id="section1">
+let sectionsAdded = 0;
+
+
+
+function addSection() {
+    let sectionIdNumber = sectionsAdded + 1
+    let sectionToAddAfter = document.getElementById(`section${sectionIdNumber}`);
+    sectionToAddAfter.insertAdjacentHTML("afterend", addSectionText())
+}
+
+function addSectionText(){
+    let idNumber = sectionsAdded + 2
+    let htmlToAdd = `            <div class="section" id="section${idNumber}">
                 <div class="selector">
                     <label for="section-selector">Section type</label>
                     <select id="section-selector">
@@ -38,9 +50,8 @@ const textToAdd = `            <div class="section" id="section1">
                     </div>
                 </div>
             </div>`
-
-function addSection(event) {
-    section1Div.insertAdjacentHTML("afterend", textToAdd)
+    sectionsAdded++
+    return htmlToAdd;
 }
 
 addSectionsBtn.addEventListener("click", addSection);
