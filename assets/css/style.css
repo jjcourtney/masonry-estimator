@@ -30,7 +30,7 @@ main {
     grid-template-rows: 10fr 10fr 10fr 10fr auto ;
     position: relative;
     min-height: 80%;
-    grid-gap: 2rem;
+    grid-gap: 0;
     font-family: Helvetica;
 
 
@@ -50,7 +50,6 @@ main {
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 10px;
-
 
 
 }
