@@ -1,0 +1,126 @@
+:root{
+    --colour-1st: rgb(60, 123, 229);
+    --colour-2nd: rgba(255, 255, 255, 0.34);
+    --colour-3rd: rgba(227, 227, 227, 0.84);
+    --colour-text-1st: white;
+    --colour-text-2nd: black;
+    margin: 10px;
+
+    font-weight: bold;
+
+
+}
+body{
+    background-color: var(--colour-1st);
+    color: var(--colour-text-2nd);
+    font-family: Helvetica;
+}
+main {
+    display: grid;
+    grid-template-columns: 60fr 40fr;
+    grid-gap: 15px;
+    min-height: 700px;
+    font-family: Helvetica;
+}
+
+.container {
+    background-color: var(--colour-3rd);
+    display: grid;
+    grid-template-columns: 20fr;
+    grid-template-rows: 10fr 10fr 10fr 10fr auto ;
+    position: relative;
+    min-height: 80%;
+    grid-gap: 2rem;
+    font-family: Helvetica;
+
+
+}
+
+.container > div{
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 95%;
+}
+.section{
+    border-radius: 15px;
+    width: 95%;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+
+
+}
+
+section, div {
+    background-color: var(--colour-3rd);
+    border-radius: 15px;
+    /*border: 2px solid black;*/
+}
+
+.selection {
+    display: grid;
+    grid-template-columns: 20fr 80fr;
+    top: 10px
+}
+
+.section > div {
+    max-width: 90%;
+    justify-content: center;
+    margin: 10px auto;
+
+}
+input {
+    max-width: 2.5rem;
+}
+.selector, .section-properties {
+    display: grid;
+    justify-content: center;
+}
+.section-properties {
+
+    grid-template-columns: 15fr 15fr 15fr 15fr auto;
+    justify-content: center;
+}
+
+
+.section-properties div{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: block;
+
+}
+
+.functionality{
+    position: absolute;
+    bottom: 2.5%;
+    right: 2.5%;
+    width: 95%;
+    border-radius: 15px;
+
+}
+button{
+    background-color: var(--colour-1st);
+    color: var(--colour-text-1st);
+    border-radius: 20px;
+    border:none;
+    height: 2rem;
+    padding: 0.3rem;
+    margin: 0.5rem;
+    font-family: Helvetica;
+}
+
+select {
+    background-color: var(--colour-1st);
+    color: var(--colour-text-1st);
+    font-size: large;
+    font-family: Helvetica;
+}
+option{
+    background-color: var(--colour-text-2nd);
+    color: var(--colour-text-1st);
+}
