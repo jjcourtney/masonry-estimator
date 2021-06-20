@@ -1,8 +1,8 @@
 const addSectionsBtn = document.getElementById("add-section");
 const updateBtn = document.getElementById("update");
 const sendToQuoteBtn = document.getElementById("send-to-quote");
-const changeDefaultsBtn = document.getElementById("change-defaults");
-const section1Div = document.getElementById("section1");
+// const changeDefaultsBtn = document.getElementById("change-defaults");
+
 let sectionsAdded = 0;
 
 
@@ -92,24 +92,21 @@ function updateMats(){
         // }
     }
     // console.log("calc from inputs", calcMatsRequired());
-
-
-    // type: "section",
-    //     sectionHeight: 1,  // m
-    //     sectionLength: 6,  // m
-    //     sectionThickness : 1.5, // m
-    //     brickType : standardBrick
-
 }
 
 function testCalc(){
-    console.log("calc from inputs ", calcMatsRequired());
+    let text = calcMatsRequired();
+    let bricks = text.bricks;
+    let mortar = text.mortar;
+    let outputString = `Yor require ${bricks} bricks and ${mortar} bags of mortar.`
+    document.getElementById("output-text").innerHTML = outputString;
 }
 
+
 function testObj(){
-    console.log(sectionObj1);
+    return;
 }
 addSectionsBtn.addEventListener("click", addSection);
 updateBtn.addEventListener("click", updateMats);
 sendToQuoteBtn.addEventListener("click", testCalc);
-//sendToQuoteBtn.addEventListener("click", testObj);
+// changeDefaultsBtn.addEventListener("click", testObj);

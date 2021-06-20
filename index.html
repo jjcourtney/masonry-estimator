@@ -31,19 +31,19 @@
                         </select>
                     </div>
                     <div>
-                        <label for="height1">Height</label><br>
+                        <label for="height1">Height (m)</label><br>
                         <input type="number" id="height1" class="height" max="10000" min="0">
                     </div>
                     <div>
-                        <label for="length1">Length</label><br>
+                        <label for="length1">Length (m)</label><br>
                         <input type="number" id="length1" class="length" max="10000" min="0">
                     </div>
                     <div>
-                        <label for="thickness1">Thickness</label><br>
-                        <input type="number" id="thickness1" class="thickness" max="10000" min="0">
+                        <label for="thickness1">Thickness (Bricks)</label><br>
+                        <input type="number" id="thickness1" class="thickness" max="10000" min="0.5" step="0.5">
                     </div>
                     <div>
-                        <label for="cost1">Cost per brick</label><br>
+                        <label for="cost1">Cost per brick (£)</label><br>
                         <input type="number" id="cost1" class="cost" max="10000" min="0">
                     </div>
                 </div>
@@ -66,13 +66,17 @@
                     <button id="update">Update</button>
                 </div>
                 <div>
-                    <button id="send-to-quote">Send to quote</button>
+                    <button id="send-to-quote">Calculate materials</button>
                 </div>
                 <div>
-                    <button id="change-defaults">Change defaults</button>
+                    <button id="change-defaults">display materials</button>
                 </div>
             </div>
+            <div class="output-text" id="output-text">
+                asd
+            </div>
         </section>
+
     </main>
 </body>
 </html>

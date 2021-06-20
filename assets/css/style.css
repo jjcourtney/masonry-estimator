@@ -159,3 +159,18 @@ button:hover{
     color: var(--colour-1st);
     background-color: var(--colour-2nd);
 }
+
+.output-text{
+
+margin: 15px;
+
+
+}
+#output-section{
+    position: relative;
+    display: grid;
+    grid-template-columns: 90%;
+    grid-template-rows: 6rem auto;
+    justify-content: center;
+    grid-gap: 1rem;
+}
