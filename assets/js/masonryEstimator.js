@@ -84,7 +84,7 @@ let sectionObj6 = {
     brickType : standardBrick
 }
 
-let allSectionsAndPillars = [sectionObj1, sectionObj2, sectionObj3, sectionObj4, sectionObj5, sectionObj6]; // container for all the sections and pillars
+let allSectionsAndPillars = []; // container for all the sections and pillars
 let allMaterials = []; // array contains each material object for each section and pillar
 
 
