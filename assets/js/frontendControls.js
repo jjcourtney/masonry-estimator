@@ -107,7 +107,7 @@ function testCalc(){
     let text = calcMatsRequired();
     let bricks = text.bricks;
     let mortar = text.mortar;
-    let outputString = `Yor require ${bricks} bricks and ${mortar} bags of mortar.`
+    let outputString = `You require ${bricks} bricks and ${mortar} bags of mortar.`
     document.getElementById("output-text").innerHTML = outputString;
 }
 
