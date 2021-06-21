@@ -1,6 +1,8 @@
 const addSectionsBtn = document.getElementById("add-section");
 const updateBtn = document.getElementById("update");
 const sendToQuoteBtn = document.getElementById("send-to-quote");
+let someSection1 = document.getElementById( `section-selector1`);
+someSection1.addEventListener('change', updateSection);
 // const changeDefaultsBtn = document.getElementById("change-defaults");
 
 let sectionsAdded = 0;
@@ -10,9 +12,14 @@ let sectionsAdded = 0;
 function addSection() {
     let sectionIdNumber = sectionsAdded + 1
     let sectionToAddAfter = document.getElementById(`section${sectionIdNumber}`);
-    sectionToAddAfter.insertAdjacentHTML("afterend", addSectionText())
+    sectionToAddAfter.insertAdjacentHTML("afterend", addSectionText());
 }
 
+async function addListenerToSection(){
+    await addSection();
+    let someSection = document.getElementById( `section-selector${sectionsAdded + 1}`);
+    someSection.addEventListener('change', updateSection);
+}
 function addSectionText(){
     let i = sectionsAdded + 2
     let htmlToAdd = `<div class="section" id="section${i}">
@@ -50,6 +57,8 @@ function addSectionText(){
                     </div>
                 </div>
             </div>`
+
+
     sectionsAdded++
     return htmlToAdd;
 }
@@ -103,10 +112,25 @@ function testCalc(){
 }
 
 
+
+
 function testObj(){
     return;
 }
-addSectionsBtn.addEventListener("click", addSection);
+addSectionsBtn.addEventListener("click", addListenerToSection);
 updateBtn.addEventListener("click", updateMats);
 sendToQuoteBtn.addEventListener("click", testCalc);
 // changeDefaultsBtn.addEventListener("click", testObj);
+
+
+// function to change input types on HTML depending on pillar or wall
+function updateSection(event){
+
+    let selectorID = event.target.id.split("section-selector");
+
+    let selectorNum = selectorID[1];
+
+    console.log(selectorNum)
+
+    return;
+}
