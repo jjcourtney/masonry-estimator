@@ -30,7 +30,7 @@ function addSectionText(){
                         <option value="wall">Wall</option>
                     </select>
                 </div>
-                <div class="section-properties">
+                <div class="section-properties" id="section-properties${i}">
                     <div>
                         <label for="brick-type${i}">Brick type</label><br>
                         <select id="brick-type${i}" class="brick-type">
@@ -125,12 +125,75 @@ sendToQuoteBtn.addEventListener("click", testCalc);
 
 // function to change input types on HTML depending on pillar or wall
 function updateSection(event){
-
     let selectorID = event.target.id.split("section-selector");
+    let i = selectorID[1];
 
-    let selectorNum = selectorID[1];
+    if (event.target.value == "wall"){
+        updateSectionToWall(i);
+    }else{
+        updateSectionToPillar(i);
+    }
+}
 
-    console.log(selectorNum)
+/*
+calling function should first selectorID = event.target.id.split("section-selector");
+let i = selectorID[1];
+*/
+function updateSectionToWall(i){
 
-    return;
+    let htmlToChange = `<div>
+                        <label for="brick-type${i}">Brick type</label><br>
+                        <select id="brick-type${i}" class="brick-type">
+                            <option value="standard-brick">Standard Brick</option>
+                            <option value="imperial-brick">Imperial Brick</option>
+                            <option value="standard-block">Standard Block</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="height${i}">Height</label><br>
+                        <input type="number" id="height${i}" class="height" max="$10000" min="0">
+                    </div>
+                    <div>
+                        <label for="length${i}">Length</label><br>
+                        <input type="number" id="length${i}" class="length" max="10000" min="0">
+                    </div>
+                    <div>
+                        <label for="thickness${i}">Thickness</label><br>
+                        <input type="number" id="thickness${i}" class="thickness" max="10000" min="0">
+                    </div>
+                    <div>
+                        <label for="cost${i}">Cost per brick</label><br>
+                        <input type="number" id="cost${i}" class="cost" max="10000" min="0">
+                    </div>`;
+
+
+    let divToChange =document.getElementById(`section-properties${i}`);
+    divToChange.innerHTML = htmlToChange;
+}
+function updateSectionToPillar(i){
+
+    let htmlToChange = `<div>
+                        <label for="brick-type${i}">Brick type</label><br>
+                        <select id="brick-type${i}" class="brick-type">
+                            <option value="standard-brick">Standard Brick</option>
+                            <option value="imperial-brick">Imperial Brick</option>
+                            <option value="standard-block">Standard Block</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="height${i}">Height (m)</label><br>
+                        <input type="number" id="height${i}" class="height" max="10000" min="0">
+                    </div>
+                    <div>
+                        <label for="length${i}">Base (Bricks)</label><br>
+                        <input type="number" id="length${i}" class="length" max="10000" min="0">
+                    </div>
+                    <div>
+                        <label for="cost${i}">Cost per brick (£)</label><br>
+                        <input type="number" id="cost${i}" class="cost" max="10000" min="0">
+                    </div>`;
+
+
+    let divToChange =document.getElementById(`section-properties${i}`);
+    divToChange.innerHTML = htmlToChange;
 }
