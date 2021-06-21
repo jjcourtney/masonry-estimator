@@ -27,7 +27,7 @@ function addSectionText(){
                     <label for="section-selector${i}">Section type</label>
                     <select id="section-selector${i}" class="section-selector">
                         <option value="pillar" >Pillar</option>
-                        <option value="wall">Wall</option>
+                        <option value="wall" selected>Wall</option>
                     </select>
                 </div>
                 <div class="section-properties" id="section-properties${i}">
@@ -63,7 +63,7 @@ function addSectionText(){
     return htmlToAdd;
 }
 
-function updateMats(){
+async function updateMats(){
     allSectionsAndPillars = []
     //console.log("selector length", document.getElementsByClassName("section-selector").length)
     //console.log("selector length", document.getElementsByClassName("section-selector")[2])
@@ -103,42 +103,24 @@ function updateMats(){
     // console.log("calc from inputs", calcMatsRequired());
 }
 
-function testCalc(){
+async function testCalc(){
+    await updateMats();
     let text = calcMatsRequired();
     let bricks = text.bricks;
     let mortar = text.mortar;
-    let outputString = `You require ${bricks} bricks and ${mortar} bags of mortar.`
+    let mortarKgs = mortar * 25;
+    let outputString = `You require ${bricks} bricks and ${mortar}, 25kg bags (${mortarKgs} kgs) of mortar.`
     document.getElementById("output-text").innerHTML = outputString;
 }
 
-
-
-
 function testObj(){
-    return;
+    //
 }
 addSectionsBtn.addEventListener("click", addListenerToSection);
-updateBtn.addEventListener("click", updateMats);
-sendToQuoteBtn.addEventListener("click", testCalc);
+updateBtn.addEventListener("click", testCalc);
+//sendToQuoteBtn.addEventListener("click", testCalc);
 // changeDefaultsBtn.addEventListener("click", testObj);
 
-
-// function to change input types on HTML depending on pillar or wall
-function updateSection(event){
-    let selectorID = event.target.id.split("section-selector");
-    let i = selectorID[1];
-
-    if (event.target.value == "wall"){
-        updateSectionToWall(i);
-    }else{
-        updateSectionToPillar(i);
-    }
-}
-
-/*
-calling function should first selectorID = event.target.id.split("section-selector");
-let i = selectorID[1];
-*/
 function updateSectionToWall(i){
 
     let htmlToChange = `<div>
@@ -197,3 +179,16 @@ function updateSectionToPillar(i){
     let divToChange =document.getElementById(`section-properties${i}`);
     divToChange.innerHTML = htmlToChange;
 }
+
+// function to change input types on HTML depending on pillar or wall
+function updateSection(event){
+    let selectorID = event.target.id.split("section-selector");
+    let i = selectorID[1];
+
+    if (event.target.value === "wall"){
+        updateSectionToWall(i);
+    }else{
+        updateSectionToPillar(i);
+    }
+}
+
