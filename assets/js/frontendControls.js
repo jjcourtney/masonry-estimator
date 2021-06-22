@@ -137,62 +137,62 @@ updateBtn.addEventListener("click", calculateAllMats);
 //sendToQuoteBtn.addEventListener("click", calculateAllMats);
 // changeDefaultsBtn.addEventListener("click", testObj);
 
-function updateSectionToWall(i){
+function updateSectionToWall(sectionIdNum){
 
     let htmlToChange = `<div>
-                        <label for="brick-type${i}">Brick type</label><br>
-                        <select id="brick-type${i}" class="brick-type">
+                        <label for="brick-type${sectionIdNum}">Brick type</label><br>
+                        <select id="brick-type${sectionIdNum}" class="brick-type">
                             <option value="standard-brick">Standard Brick</option>
                             <option value="imperial-brick">Imperial Brick</option>
                             <option value="standard-block">Standard Block</option>
                         </select>
                     </div>
                     <div>
-                        <label for="height${i}">Height</label><br>
-                        <input type="number" id="height${i}" class="height" max="$10000" min="0">
+                        <label for="height${sectionIdNum}">Height</label><br>
+                        <input type="number" id="height${sectionIdNum}" class="height" max="10000" min="0">
                     </div>
                     <div>
-                        <label for="length${i}">Length</label><br>
-                        <input type="number" id="length${i}" class="length" max="10000" min="0">
+                        <label for="length${sectionIdNum}">Length</label><br>
+                        <input type="number" id="length${sectionIdNum}" class="length" max="10000" min="0">
                     </div>
                     <div>
-                        <label for="thickness${i}">Thickness</label><br>
-                        <input type="number" id="thickness${i}" class="thickness" max="10000" min="0">
+                        <label for="thickness${sectionIdNum}">Thickness</label><br>
+                        <input type="number" id="thickness${sectionIdNum}" class="thickness" max="10000" min="0">
                     </div>
                     <div>
-                        <label for="cost${i}">Cost per brick</label><br>
-                        <input type="number" id="cost${i}" class="cost" max="10000" min="0">
+                        <label for="cost${sectionIdNum}">Cost per brick</label><br>
+                        <input type="number" id="cost${sectionIdNum}" class="cost" max="10000" min="0">
                     </div>`;
 
 
-    let divToChange =document.getElementById(`section-properties${i}`);
+    let divToChange =document.getElementById(`section-properties${sectionIdNum}`);
     divToChange.innerHTML = htmlToChange;
 }
-function updateSectionToPillar(i){
+function updateSectionToPillar(sectionIdNum){
 
     let htmlToChange = `<div>
-                        <label for="brick-type${i}">Brick type</label><br>
-                        <select id="brick-type${i}" class="brick-type">
+                        <label for="brick-type${sectionIdNum}">Brick type</label><br>
+                        <select id="brick-type${sectionIdNum}" class="brick-type">
                             <option value="standard-brick">Standard Brick</option>
                             <option value="imperial-brick">Imperial Brick</option>
                             <option value="standard-block">Standard Block</option>
                         </select>
                     </div>
                     <div>
-                        <label for="height${i}">Height (m)</label><br>
-                        <input type="number" id="height${i}" class="height" max="10000" min="0">
+                        <label for="height${sectionIdNum}">Height (m)</label><br>
+                        <input type="number" id="height${sectionIdNum}" class="height" max="10000" min="0">
                     </div>
                     <div>
-                        <label for="length${i}">Base (Bricks)</label><br>
-                        <input type="number" id="base-size${i}" class="base-size" max="10000" min="0">
+                        <label for="length${sectionIdNum}">Base (Bricks)</label><br>
+                        <input type="number" id="base-size${sectionIdNum}" class="base-size" max="10000" min="0">
                     </div>
                     <div>
-                        <label for="cost${i}">Cost per brick (£)</label><br>
-                        <input type="number" id="cost${i}" class="cost" max="10000" min="0">
+                        <label for="cost${sectionIdNum}">Cost per brick (£)</label><br>
+                        <input type="number" id="cost${sectionIdNum}" class="cost" max="10000" min="0">
                     </div>`;
 
 
-    let divToChange =document.getElementById(`section-properties${i}`);
+    let divToChange =document.getElementById(`section-properties${sectionIdNum}`);
     divToChange.innerHTML = htmlToChange;
 }
 
