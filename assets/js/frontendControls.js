@@ -66,8 +66,7 @@ function addSectionText(){
     return htmlToAdd;
 }
 
-// ***BUG*** using elements class to find - will cause a mismatch
-// need to change to getElementByID
+
 
 async function updateMats(){
     allSectionsAndPillars = []
@@ -75,15 +74,15 @@ async function updateMats(){
     //console.log("selector length", document.getElementsByClassName("section-selector")[2])
 
     // class name .section is universal so will work with pillar and wall.
-    for (let i = 0; i < document.getElementsByClassName("section").length; i++){
+    for (let i = 1; i <= document.getElementsByClassName("section").length; i++){
         //common attributes for wall and pillar
-        let sectionType = document.getElementsByClassName(`section-selector`)[i].value;
+        let sectionType = document.getElementById(`section-selector${i}`).value;
         console.log(sectionType);
-        let brickType = document.getElementsByClassName(`brick-type`)[i].value;
+        let brickType = document.getElementById(`brick-type${i}`).value;
         console.log(brickType);
-        let wallHeight = document.getElementsByClassName(`height`)[i].value;
+        let wallHeight = document.getElementById(`height${i}`).value;
         console.log(wallHeight);
-        let brickCost = document.getElementsByClassName(`cost`)[i].value;
+        let brickCost = document.getElementById(`cost${i}`).value;
         console.log(brickCost);
         if (brickType === "standard-brick"){
             brickType = standardBrick;
@@ -92,10 +91,10 @@ async function updateMats(){
         }else{
             brickType = standardBlock;
         }
-        //if(sectionType === "wall") {
-            let wallThickness= document.getElementsByClassName(`thickness`)[i].value;
+        if(sectionType === "wall") {
+            let wallThickness= document.getElementById(`thickness${i}`).value;
             console.log(wallThickness);
-            let wallLength = document.getElementsByClassName(`length`)[i].value;
+            let wallLength = document.getElementById(`length${i}`).value;
             console.log(wallLength);
             allSectionsAndPillars.push( {
                 type: "wall",
@@ -103,15 +102,15 @@ async function updateMats(){
                 sectionLength: wallLength,
                 sectionThickness: wallThickness,
                 brickType: brickType})
-        // }else{
-        //let baseSize = document.getElementsByClassName(`base-size`)[i].value;
-        // allSectionsAndPillars.push( {
-        //     type: "pillar",
-        //     sectionHeight: wallHeight,
-        //     base: baseSize,
-        //     brickType: brickType})
+         }else{
+        let baseSize = document.getElementById(`base-size${i}`).value;
+        allSectionsAndPillars.push( {
+            type: "pillar",
+            sectionHeight: wallHeight,
+            base: baseSize,
+            brickType: brickType})
 
-        // }
+        }
     }
     // console.log("calc from inputs", calcMatsRequired());
 }
