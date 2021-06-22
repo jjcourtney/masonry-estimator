@@ -1,3 +1,5 @@
+
+
 const addSectionsBtn = document.getElementById("add-section");
 const updateBtn = document.getElementById("update");
 const sendToQuoteBtn = document.getElementById("send-to-quote");
@@ -64,10 +66,15 @@ function addSectionText(){
     return htmlToAdd;
 }
 
+// ***BUG*** using elements class to find - will cause a mismatch
+// need to change to getElementByID
+
 async function updateMats(){
     allSectionsAndPillars = []
     //console.log("selector length", document.getElementsByClassName("section-selector").length)
     //console.log("selector length", document.getElementsByClassName("section-selector")[2])
+
+    // class name .section is universal so will work with pillar and wall.
     for (let i = 0; i < document.getElementsByClassName("section").length; i++){
         //common attributes for wall and pillar
         let sectionType = document.getElementsByClassName(`section-selector`)[i].value;
@@ -91,14 +98,19 @@ async function updateMats(){
             let wallLength = document.getElementsByClassName(`length`)[i].value;
             console.log(wallLength);
             allSectionsAndPillars.push( {
-                type: "section",
+                type: "wall",
                 sectionHeight: wallHeight,
                 sectionLength: wallLength,
                 sectionThickness: wallThickness,
                 brickType: brickType})
         // }else{
         //let baseSize = document.getElementsByClassName(`base-size`)[i].value;
-        console.log(wallThickness);
+        // allSectionsAndPillars.push( {
+        //     type: "pillar",
+        //     sectionHeight: wallHeight,
+        //     base: baseSize,
+        //     brickType: brickType})
+
         // }
     }
     // console.log("calc from inputs", calcMatsRequired());

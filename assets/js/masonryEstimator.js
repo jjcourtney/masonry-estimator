@@ -44,45 +44,21 @@ const standardBlock = {
     cost: 0.2 // £
 }
 
-let sectionObj1 = {
-    type: "section",
+let wallExample = {
+    type: "wall",
     sectionHeight: 1,  // m
     sectionLength: 6,  // m
     sectionThickness : 1.5, // m
     brickType : standardBrick
 }
 
-let sectionObj2 = {
+let pillarExample = {
     type : "pillar",
     sectionHeight: 2,  // m
     base: 5,  // number of bricks
     brickType : standardBrick
 }
-let sectionObj3 = {
-    type : "pillar",
-    sectionHeight: 1,  // m
-    base: 4,  // number of bricks
-    brickType : standardBrick
-}
-let sectionObj4 = {
-    type : "pillar",
-    sectionHeight: 1,  // m
-    base: 8,  // number of bricks
-    brickType : standardBrick
-}
-let sectionObj5 = {
-    type : "pillar",
-    sectionHeight: 1,  // m
-    base: 3,  // number of bricks
-    brickType : standardBrick
-}
-let sectionObj6 = {
-    type: "section",
-    sectionHeight: 1,  // m
-    sectionLength: 10,  // m
-    sectionThickness : 1.5, // m
-    brickType : standardBrick
-}
+
 
 let allSectionsAndPillars = []; // container for all the sections and pillars
 let allMaterials = []; // array contains each material object for each section and pillar
@@ -184,7 +160,7 @@ function createArrayOfMaterials() {
         let brick = secOrPillar.type;
         // console.log(secOrPillar);
         let tmpMatsReq = {};
-        if (secOrPillar.type === "section"){
+        if (secOrPillar.type === "wall"){
             // console.log(secOrPillar.brickType, "brick type")
             tmpMatsReq = materialsRequiredSection(secOrPillar.sectionHeight, secOrPillar.sectionLength, secOrPillar.sectionThickness, secOrPillar.brickType)
         } else {
