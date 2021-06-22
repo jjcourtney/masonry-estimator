@@ -173,7 +173,7 @@ function updateSectionToPillar(i){
                     </div>
                     <div>
                         <label for="length${i}">Base (Bricks)</label><br>
-                        <input type="number" id="length${i}" class="length" max="10000" min="0">
+                        <input type="number" id="base-size${i}" class="base-size" max="10000" min="0">
                     </div>
                     <div>
                         <label for="cost${i}">Cost per brick (£)</label><br>
