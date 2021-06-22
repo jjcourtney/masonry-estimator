@@ -14,12 +14,13 @@ function addSection() {
     let sectionToAddAfter = document.getElementById(`section${sectionIdNumber}`);
     sectionToAddAfter.insertAdjacentHTML("afterend", addSectionText());
 }
-
+// adds an event listener to newly created section
 async function addListenerToSection(){
     await addSection();
     let someSection = document.getElementById( `section-selector${sectionsAdded + 1}`);
     someSection.addEventListener('change', updateSection);
 }
+
 function addSectionText(){
     let i = sectionsAdded + 2
     let htmlToAdd = `<div class="section" id="section${i}">
@@ -103,22 +104,26 @@ async function updateMats(){
     // console.log("calc from inputs", calcMatsRequired());
 }
 
-async function testCalc(){
+async function calculateAllMats(){
     await updateMats();
     let text = calcMatsRequired();
     let bricks = text.bricks;
     let mortar = text.mortar;
     let mortarKgs = mortar * 25;
     let outputString = `You require ${bricks} bricks and ${mortar}, 25kg bags (${mortarKgs} kgs) of mortar.`
-    document.getElementById("output-text").innerHTML = outputString;
+    outputHTML(outputString, "output-text")
+}
+
+function outputHTML(outputString, outputID){
+    document.getElementById(outputID).innerHTML = outputString;
 }
 
 function testObj(){
     //
 }
 addSectionsBtn.addEventListener("click", addListenerToSection);
-updateBtn.addEventListener("click", testCalc);
-//sendToQuoteBtn.addEventListener("click", testCalc);
+updateBtn.addEventListener("click", calculateAllMats);
+//sendToQuoteBtn.addEventListener("click", calculateAllMats);
 // changeDefaultsBtn.addEventListener("click", testObj);
 
 function updateSectionToWall(i){
